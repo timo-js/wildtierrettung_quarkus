@@ -1,3 +1,5 @@
+package Revier;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -6,6 +8,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Min;
 
 import java.util.List;
+import java.util.Optional;
 
 import static jakarta.transaction.Transactional.TxType.REQUIRED;
 import static jakarta.transaction.Transactional.TxType.SUPPORTS;
@@ -19,17 +22,20 @@ public class RevierService
 	@Transactional(SUPPORTS)
 	public List<Revier> findeAlle() {
 		TypedQuery<Revier> query = em.createQuery(
-			"SELECT r FROM Revier r ORDER BY r.name ASC", Revier.class
+			"SELECT r FROM Revier.Revier r ORDER BY r.name ASC", Revier.class
 		);
 		return query.getResultList();
 	}
 
-	// TODO: Dieser Service läuft auf einen Fehler
 	@Transactional(REQUIRED)
-	public Revier aktualisiere(Long id) {
+	public Optional<Revier> aktualisiere(Long id, Revier updatedRevier) {
 		Revier revier = em.getReference(Revier.class, id);
-		em.persist(revier);
-		return revier;
+		if (revier != null) {
+			revier.setName(updatedRevier.getName());
+			revier.setAnsprechpartner(updatedRevier.getAnsprechpartner());
+			return Optional.of(revier);
+		}
+		return Optional.empty();
 	}
 
 	@Transactional(REQUIRED)

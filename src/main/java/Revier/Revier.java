@@ -1,16 +1,15 @@
+package Revier;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import org.hibernate.Length;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Revier
+public class Revier  extends PanacheEntity
 {
-	@Id @GeneratedValue
-	private Long id;
-
 	@NotEmpty
 	@Column(length = 50)
 	private String name;

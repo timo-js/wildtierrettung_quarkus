@@ -1,3 +1,5 @@
+package Pilot;
+
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -23,13 +25,20 @@ public class PilotService
 	@Transactional(SUPPORTS)
 	public List<Pilot> findeAlle() {
 		TypedQuery<Pilot> query = em.createQuery(
-			"SELECT p FROM Pilot p ORDER BY p.nachname ASC", Pilot.class
+			"SELECT p FROM Pilot.Pilot p ORDER BY p.nachname ASC", Pilot.class
 		);
 		return query.getResultList();
 	}
 
 	@Transactional(REQUIRED)
 	public Pilot legeAn(Pilot pilot) {
+		em.persist(pilot);
+		return pilot;
+	}
+
+	@Transactional(REQUIRED)
+	public Pilot aktualisiere(Long id) {
+		Pilot pilot = em.getReference(Pilot.class, id);
 		em.persist(pilot);
 		return pilot;
 	}

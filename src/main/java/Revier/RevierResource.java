@@ -1,3 +1,5 @@
+package Revier;
+
 import jakarta.inject.Inject;
 import jakarta.validation.constraints.Min;
 import jakarta.ws.rs.*;
@@ -6,6 +8,7 @@ import jakarta.ws.rs.core.UriInfo;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -40,9 +43,10 @@ public class RevierResource
 
 	@PUT
 	@Path("/{id}")
-	public Response aktualisiereRevier(@PathParam("id") @Min(1) Long id) {
-		Revier revier = service.aktualisiere(id);
-		return Response.ok(revier).build();
+	public Response aktualisiereRevier(@PathParam("id") @Min(1) Long id, Revier revier) {
+		Optional<Revier> updatedRevier = service.aktualisiere(id, revier);
+		return updatedRevier.map(r -> Response.ok(r).build())
+			.orElse(Response.status(Response.Status.NOT_FOUND).build());
 	}
 
 	@DELETE

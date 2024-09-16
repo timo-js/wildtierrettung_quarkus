@@ -1,3 +1,5 @@
+package Pilot;
+
 import jakarta.inject.Inject;
 import jakarta.validation.constraints.Min;
 import jakarta.ws.rs.*;
@@ -48,6 +50,12 @@ public class PilotResource
 		return Response.created(erstellteURI).entity(pilot).build();
 	}
 
+	@PUT
+	@Path("/{id}")
+	public Response aktualisierePilot(@PathParam("id") @Min(1) Long id) {
+		Pilot pilot = service.aktualisiere(id);
+		return Response.ok(pilot).build();
+	}
 
 	@DELETE
 	@Path("/{id}")
