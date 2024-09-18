@@ -1,11 +1,12 @@
 package Wild;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class Gelege
 {
-//	@Transient
+	@NotNull
 	private Wildart wildart;
 
 	private Integer anzahlKuecken;
@@ -19,7 +20,6 @@ public class Gelege
 		this.anzahlEier = anzahlEier;
 	}
 
-//	@Transient
 	public Wildart getWildart() {
 		return wildart;
 	}
