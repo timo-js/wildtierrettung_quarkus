@@ -1,6 +1,5 @@
-package Pilot;
+package Piloten;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Min;

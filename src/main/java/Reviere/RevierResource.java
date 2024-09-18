@@ -1,4 +1,4 @@
-package Revier;
+package Reviere;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

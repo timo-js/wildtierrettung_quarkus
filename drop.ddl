@@ -4,9 +4,9 @@
     alter table if exists Revier_ansprechpartner 
        drop constraint if exists FKbao4jq27fyuichw6gwhy3wt62;
 
-    drop table if exists Pilot cascade;
+    drop table if exists Piloten cascade;
 
-    drop table if exists Revier cascade;
+    drop table if exists Reviere cascade;
 
     drop table if exists Revier_ansprechpartner cascade;
 

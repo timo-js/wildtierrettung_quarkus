@@ -3,14 +3,14 @@
 
     create sequence Revier_SEQ start with 1 increment by 50;
 
-    create table Pilot (
+    create table Piloten (
         id bigint not null,
         nachname varchar(50),
         vorname varchar(50),
         primary key (id)
     );
 
-    create table Revier (
+    create table Reviere (
         id bigint not null,
         name varchar(50),
         primary key (id)
@@ -24,7 +24,7 @@
     alter table if exists Revier_ansprechpartner 
        add constraint FKbao4jq27fyuichw6gwhy3wt62 
        foreign key (Revier_id) 
-       references Revier;
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1001, 'Timo', 'Vink');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1002, 'Magnus', 'Sprehe');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1003, 'Arne', 'Kramer');
+       references Reviere;
+INSERT INTO Piloten (id, vorname, nachname) VALUES ( 1001, 'Timo', 'Vink');
+INSERT INTO Piloten (id, vorname, nachname) VALUES ( 1002, 'Magnus', 'Sprehe');
+INSERT INTO Piloten (id, vorname, nachname) VALUES ( 1003, 'Arne', 'Kramer');
