@@ -19,6 +19,7 @@ dependencies {
 //    implementation 'io.quarkiverse.primefaces:quarkus-primefaces:3.14.4'
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
     implementation 'io.quarkus:quarkus-arc'
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }
