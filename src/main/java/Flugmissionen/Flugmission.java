@@ -2,6 +2,7 @@ package Flugmissionen;
 
 import Wild.Gelege;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.json.bind.annotation.JsonbDateFormat;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
@@ -18,6 +19,7 @@ public class Flugmission extends PanacheEntity
 {
 	@NotNull
 	@Temporal(TemporalType.DATE)
+	@JsonbDateFormat("dd.MM.yyyy")
 	public LocalDate datum;
 
 	@NotEmpty
