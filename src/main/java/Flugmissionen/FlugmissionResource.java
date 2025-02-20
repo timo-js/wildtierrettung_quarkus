@@ -1,6 +1,7 @@
 package Flugmissionen;
 
 import Reviere.Revier;
+import io.quarkus.panache.common.Sort;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Min;
@@ -11,6 +12,8 @@ import jakarta.ws.rs.core.UriInfo;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static jakarta.transaction.Transactional.TxType.REQUIRED;
@@ -22,14 +25,31 @@ public class FlugmissionResource
 {
 	@Inject
 	UriInfo uriInfo;
+
 	@GET
-	public Response holeFlugmissionen() {
-		List<Flugmission> flugmissionen = Flugmission.listAll();
+	public Response holeFlugmissionen(
+		@QueryParam("sortierenach") @DefaultValue("datum") String sortiereNach,
+		@QueryParam("sortierreihenfolge") @DefaultValue("asc") String sortierReihenfolge) {
+		Sort sortierung = erzeugeSortierung(sortiereNach, Arrays.asList("datum", "revier"), sortierReihenfolge);
+
+		List<Flugmission> flugmissionen = Flugmission.listAll(sortierung);
 
 		if(flugmissionen.isEmpty())
 			return Response.noContent().build();
 
 		return Response.ok(flugmissionen).build();
+	}
+
+	private Sort erzeugeSortierung(String sortiereNach, List<String> moeglicheSortierOptionen, String sortierReihenfolge) {
+		Sort sortierung = Sort.empty();
+		sortiereNach = sortiereNach.toLowerCase();
+
+		if (moeglicheSortierOptionen.contains(sortiereNach)) {
+			sortierung = Sort.by(sortiereNach);
+		}
+		sortierung.direction(sortierReihenfolge.equals("desc") ? Sort.Direction.Descending : Sort.Direction.Ascending);
+
+		return sortierung;
 	}
 
 	@POST
