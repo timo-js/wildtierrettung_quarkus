@@ -1,31 +1,31 @@
 plugins {
     id 'java'
-    id 'io.quarkus'
-}
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-dependencies {
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-hibernate-orm'
-    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
-    implementation 'io.quarkus:quarkus-narayana-jta'
-    implementation 'io.quarkus:quarkus-hibernate-validator'
-    implementation 'io.quarkus:quarkus-resteasy-jsonb'
-    implementation 'io.quarkus:quarkus-smallrye-openapi'
-//    implementation 'io.quarkiverse.primefaces:quarkus-primefaces:3.14.4'
-    implementation 'io.quarkus:quarkus-jdbc-postgresql'
-    implementation 'io.quarkus:quarkus-arc'
-    implementation 'commons-beanutils:commons-beanutils:1.9.4'
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
+    id 'io.quarkus' version "${quarkusVersion}"
+    id 'io.freefair.lombok' version "${lombokVersion}"
 }
 
 group 'de.vink.timo.wildtierrettung'
 version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:${quarkusVersion}"),
+        'io.quarkus:quarkus-hibernate-orm',
+        'io.quarkus:quarkus-hibernate-orm-panache',
+        'io.quarkus:quarkus-narayana-jta',
+        'io.quarkus:quarkus-hibernate-validator',
+        'io.quarkus:quarkus-resteasy-jsonb',
+        'io.quarkus:quarkus-smallrye-openapi',
+        'io.quarkus:quarkus-jdbc-postgresql',
+        'io.quarkus:quarkus-jdbc-h2',
+        'io.quarkus:quarkus-arc',
+        'commons-beanutils:commons-beanutils:1.9.4'
+    testImplementation 'io.quarkus:quarkus-junit5',
+        'io.rest-assured:rest-assured'
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
