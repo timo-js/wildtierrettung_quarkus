@@ -2,13 +2,16 @@ package Reviere;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 
+
 import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
 import static jakarta.transaction.Transactional.TxType.REQUIRED;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -33,35 +36,20 @@ public class RevierResource
 
 	@POST
 	@Transactional(REQUIRED)
-	public Response legeRevierAn(Revier revier) {
+	public Response legeRevierAn(@Valid Revier revier) {
 		revier.persist();
 		if (revier.isPersistent()) {
-			URI erstelltesRevier = uriInfo.getAbsolutePathBuilder().path(Long.toString(revier.id)).build();
+			URI erstelltesRevier = uriInfo.getAbsolutePathBuilder().path(String.valueOf(revier.id)).build();
 			return Response.created(erstelltesRevier).entity(revier).build();
 		} else {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 	}
 
-
-	@PUT
-	@Path("/{id}")
-	@Transactional(REQUIRED)
-	public Response aktualisiereRevier(@PathParam("id") @Min(1) Long id, Revier revier) {
-		Revier existierendesRevier = Revier.findById(id);
-		if (existierendesRevier != null) {
-			existierendesRevier.name = revier.name;
-			existierendesRevier.ansprechpartner = revier.ansprechpartner;
-			return Response.ok(existierendesRevier).build();
-		} else {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-	}
-
 	@DELETE
 	@Path("/{id}")
 	@Transactional
-	public Response loescheRevier(@PathParam("id") @Min(1) Long id) {
+	public Response loescheRevier(@PathParam("id") UUID id) {
 		boolean isDeleted = Revier.deleteById(id);
 		if(isDeleted) {
 			return Response.noContent().build();

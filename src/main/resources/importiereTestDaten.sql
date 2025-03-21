@@ -1,36 +1,36 @@
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1001, 'Timo', 'Vink');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1002, 'Magnus', 'Sprehe');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 1003, 'Arne', 'Kramer');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'fc9aa722-73da-46ca-9471-a1ee83d97959', 'Timo', 'Vink');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'b465c9a0-7910-4bd0-8c07-d1995e3d52b1', 'Magnus', 'Sprehe');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'a3f000d8-29a4-480d-975e-e3c74fbed647', 'Arne', 'Kramer');
 
-INSERT INTO Revier (id, name) VALUES ( 1001, 'Revier 6' );
-INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES (1001, 'Hermann');
-INSERT INTO Revier (id, name) VALUES ( 1002, 'Revier 7' );
-INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES (1002, 'Max Mustermann');
-
-INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
-VALUES (1, 1001, TO_DATE('17.12.2015', 'DD.MM.YYYY'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
-INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
-VALUES (1, 1001);
-INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
-VALUES (5, 0, 1, 1);
+INSERT INTO Revier (id, name) VALUES ( 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Revier 6' );
+INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Hermann');
+INSERT INTO Revier (id, name) VALUES ( '05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Revier 7' );
+INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Max Mustermann');
 
 INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
-VALUES (2, 1002, TO_DATE('17.12.2016', 'DD.MM.YYYY'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
+VALUES ('a522b17d-5906-43c9-8d53-eb9634da03bf', 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', PARSEDATETIME('17.12.2015', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
 INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
-VALUES (2, 1001);
+VALUES ('a522b17d-5906-43c9-8d53-eb9634da03bf', 'fc9aa722-73da-46ca-9471-a1ee83d97959');
 INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
-VALUES (5, 0, 1, 2);
+VALUES (5, 0, 1, 'a522b17d-5906-43c9-8d53-eb9634da03bf');
 
 INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
-VALUES (3, 1001, TO_DATE('17.12.2017', 'DD.MM.YYYY'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
+VALUES ('7d7d7bba-9d8c-42df-87cd-28f9322dc65d', '05224c4e-ca30-4a03-a6fd-32ec3e79b382', PARSEDATETIME('17.12.2016', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
 INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
-VALUES (3, 1001);
+VALUES ('7d7d7bba-9d8c-42df-87cd-28f9322dc65d', 'fc9aa722-73da-46ca-9471-a1ee83d97959');
 INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
-VALUES (5, 0, 1, 3);
+VALUES (5, 0, 1, '7d7d7bba-9d8c-42df-87cd-28f9322dc65d');
 
 INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
-VALUES (4, 1002, TO_DATE('17.12.2018', 'DD.MM.YYYY'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
+VALUES ('9bb1a8ae-10bc-487a-8be1-85dfa5c51cfa', 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', PARSEDATETIME('17.12.2017', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
 INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
-VALUES (4, 1001);
+VALUES ('9bb1a8ae-10bc-487a-8be1-85dfa5c51cfa', 'fc9aa722-73da-46ca-9471-a1ee83d97959');
 INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
-VALUES (5, 0, 1, 4);
+VALUES (5, 0, 1, '9bb1a8ae-10bc-487a-8be1-85dfa5c51cfa');
+
+INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
+VALUES ('8cb0a020-7154-4c5b-bc18-50c469aa68ac', '05224c4e-ca30-4a03-a6fd-32ec3e79b382', PARSEDATETIME('17.12.2018', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
+INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
+VALUES ('8cb0a020-7154-4c5b-bc18-50c469aa68ac', 'fc9aa722-73da-46ca-9471-a1ee83d97959');
+INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
+VALUES (5, 0, 1, '8cb0a020-7154-4c5b-bc18-50c469aa68ac');
