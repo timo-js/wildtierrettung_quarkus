@@ -34,3 +34,9 @@ INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
 VALUES ('8cb0a020-7154-4c5b-bc18-50c469aa68ac', 'fc9aa722-73da-46ca-9471-a1ee83d97959');
 INSERT INTO flugmission_gelege (anzahlEier, anzahlKuecken, wildart, flugmission_id)
 VALUES (5, 0, 1, '8cb0a020-7154-4c5b-bc18-50c469aa68ac');
+
+INSERT INTO users (id, username, password, roles)
+VALUES (RANDOM_UUID(), 'testadmin', '$2a$10$w4WgpkZTCyJtxu2CG.R.juQ3JSnsVq6r0Kf2VVJHQ4O9z69MZCjeq', 'admin,pilot'); -- passwort: testadmin
+
+INSERT INTO users (id, username, password, roles)
+VALUES (RANDOM_UUID(), 'testpilot', '$2a$10$jj761prJw411HBCvr/KGIegdDrernOQJEImCOxCy9GT7GEA35CrtS', 'pilot'); -- passwort: testadmin

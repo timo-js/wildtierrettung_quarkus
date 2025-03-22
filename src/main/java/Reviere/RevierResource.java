@@ -1,13 +1,12 @@
 package Reviere;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
-
 
 import java.net.URI;
 import java.util.List;
@@ -25,6 +24,7 @@ public class RevierResource
 	UriInfo uriInfo;
 
 	@GET
+	@RolesAllowed({"admin", "pilot", "zuschauer"})
 	public Response holeReviere() {
 		List<Revier> reviere = Revier.listAll();
 
@@ -35,6 +35,7 @@ public class RevierResource
 	}
 
 	@POST
+	@RolesAllowed({"admin"})
 	@Transactional(REQUIRED)
 	public Response legeRevierAn(@Valid Revier revier) {
 		revier.persist();
@@ -47,6 +48,7 @@ public class RevierResource
 	}
 
 	@DELETE
+	@RolesAllowed({"admin"})
 	@Path("/{id}")
 	@Transactional
 	public Response loescheRevier(@PathParam("id") UUID id) {

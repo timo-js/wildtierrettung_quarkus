@@ -1,9 +1,9 @@
 package Piloten;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Min;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
@@ -24,6 +24,7 @@ public class PilotResource
 	UriInfo uriInfo;
 
 	@GET
+	@RolesAllowed({"admin", "pilot"})
 	public Response holePiloten() {
 		List<Pilot> piloten = Pilot.listAll();
 
@@ -35,6 +36,7 @@ public class PilotResource
 
 	@GET
 	@Path("/{id}")
+	@RolesAllowed({"admin"})
 	public Response holePilot(@PathParam("id") UUID id) {
 		Pilot pilot = Pilot.findById(id);
 
@@ -46,6 +48,7 @@ public class PilotResource
 
 	@POST
 	@Transactional(REQUIRED)
+	@RolesAllowed({"admin"})
 	public Response legePilotAn(@Valid Pilot pilot){
 		pilot.persist();
 		if(pilot.isPersistent()) {
@@ -59,6 +62,7 @@ public class PilotResource
 	@DELETE
 	@Path("/{id}")
 	@Transactional
+	@RolesAllowed({"admin"})
 	public Response loeschePilot(@PathParam("id") UUID id) {
 		boolean isDeleted = Pilot.deleteById(id);
 		if(isDeleted) {
