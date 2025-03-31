@@ -1,11 +1,11 @@
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'fc9aa722-73da-46ca-9471-a1ee83d97959', 'Timo', 'Vink');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'b465c9a0-7910-4bd0-8c07-d1995e3d52b1', 'Magnus', 'Sprehe');
-INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'a3f000d8-29a4-480d-975e-e3c74fbed647', 'Arne', 'Kramer');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'fc9aa722-73da-46ca-9471-a1ee83d97959', 'Pilot1', 'Pilot1');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'b465c9a0-7910-4bd0-8c07-d1995e3d52b1', 'Pilot2', 'Pilot2');
+INSERT INTO Pilot (id, vorname, nachname) VALUES ( 'a3f000d8-29a4-480d-975e-e3c74fbed647', 'pilot3', 'Pilot3');
 
-INSERT INTO Revier (id, name) VALUES ( 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Revier 6' );
-INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Hermann');
-INSERT INTO Revier (id, name) VALUES ( '05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Revier 7' );
-INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Max Mustermann');
+INSERT INTO Revier (id, name) VALUES ( 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Revier1' );
+INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', 'Ansprechpartner1');
+INSERT INTO Revier (id, name) VALUES ( '05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Revier2' );
+INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Ansprechpartner2');
 
 INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
 VALUES ('a522b17d-5906-43c9-8d53-eb9634da03bf', 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', PARSEDATETIME('17.12.2015', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
