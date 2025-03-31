@@ -7,6 +7,10 @@ INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('c4bb094
 INSERT INTO Revier (id, name) VALUES ( '05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Revier2' );
 INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('05224c4e-ca30-4a03-a6fd-32ec3e79b382', 'Ansprechpartner2');
 
+--- Wird in dem Integrationstest verwendet
+INSERT INTO Revier (id, name) VALUES ( 'cf2fef77-e856-4e19-9137-c009dedb85a8', 'Revier3' );
+INSERT INTO Revier_ansprechpartner (Revier_id, ansprechpartner) VALUES ('cf2fef77-e856-4e19-9137-c009dedb85a8', 'Ansprechpartner3');
+
 INSERT INTO Flugmission (id, revier_id, datum, abgesuchteHektar, anzahlHasen, anzahlKitze, sonstigeWildtiere, kommentar, latitude, longitude)
 VALUES ('a522b17d-5906-43c9-8d53-eb9634da03bf', 'c4bb094f-23b1-4c06-9d9c-c496ed0c5e0d', PARSEDATETIME('17.12.2015', 'dd.MM.yyyy', 'en'), 10, 10, 10, 'weitere Tiere gefunden ...', 'Kommentar ...', 5.3112, 6.3112);
 INSERT INTO Flugmission_Pilot (Flugmission_id, piloten_id)
