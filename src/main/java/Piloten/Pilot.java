@@ -1,6 +1,5 @@
 package Piloten;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,9 +18,5 @@ public class Pilot extends PanacheEntityBase
 
 	@NotEmpty
 	@Column(length = 50)
-	public String vorname;
-
-	@NotEmpty
-	@Column(length = 50)
-	public String nachname;
+	public String name;
 }
