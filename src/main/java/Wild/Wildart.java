@@ -5,7 +5,8 @@ public enum Wildart
 	FASAN("Fasan"),
 	REBHUHN("Rebhuhn"),
 	ENTE("Ente"),
-	SCHNEPFE("Schnepfe");
+	SCHNEPFE("Schnepfe"),
+	KIEBITZ("Kiebitz");
 
 	private final String bezeichnung;
 
