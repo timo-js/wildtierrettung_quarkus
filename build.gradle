@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-container-image-docker'
     implementation 'io.quarkus:quarkus-security-jpa',
             implementation("io.quarkus:quarkus-elytron-security-jdbc")
     implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:${quarkusVersion}"),
