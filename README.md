@@ -1,64 +1,85 @@
-# wildtierrettung
+# Wildtierrettung REST API
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Autor: Timo Vink
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+Dieses Projekt stellt das Backend für die Wildtierrettungs-Software bereit.
+Es definiert mittels Hibernate das Datenmodell und stellt die JDBC-Verbindung zu einer gehosteten Datenbank her.
+Mittels HTTP Aufrufen können diverse Endpunkte angesprochen werden um Daten aus dem Backend zu erhalten.
 
-## Running the application in dev mode
+## Bauen der Anwendung und Deployment bei Heroku
 
-You can run your application in dev mode that enables live coding using:
+### Bauen des deploybaren Docker-Containers
+
+Als Hosting Anbieter wird Heroku empfohlen.
+Die Anwendung mit Hilfe der folgenden Skripte als Docker-Container gebaut werden. Dazu mittels CMD, Powershell oder
+Linux Konsole in das Projektverzeichnis wechseln.
+
+WICHTIG: Docker muss installiert und gestartet sein. (https://www.docker.com/get-started/)
+
+Windows Powershell
+
+```shell script
+.\deployment\build_heroku.ps1 
+```
+
+Windows CMD
+
+```shell script
+.\deployment\build_heroku.bat 
+```
+
+Linux
+
+```shell script
+./deployment/build_heroku.sh  
+```
+
+Diese Skripte bauen ein lokales Docker Image, welches nun an einen Hosting Anbieter (hier: Heroku) gepushed werden kann.
+
+### Deployen des Containers bei Heroku
+
+Die Anwendung kann wie in der ofiziellen Quarkus Dokumentation erklärt bei Heroku deployed
+werden (https://quarkus.io/guides/deploying-to-heroku#push-and-release-the-image). Für das deployment mittels Docker
+liegen im Projektverzeichnis im Unterordner "deplyoment" ensprechende Skripte. Wenn das deployment einmalig eingerichtet
+wurde können zukünfitge deployments über die Skripte ausgeführt werden.
+
+Vorkehrungen:
+
+* Die Heroku CLI muss installiert sein, um die Skripte nutzen zu können (https://quarkus.io/guides/deploying-to-heroku).
+* Bei Heroku (https://heroku.com) muss ein Account angelegt sein und ein entsprechender Dyno gebucht werden
+* Bei Heroku muss das repository einmalig angelegt worden
+  sein (https://quarkus.io/guides/deploying-to-heroku#deploy-the-repository-and-build-on-heroku)
+
+Windows Powershell
+
+```shell script
+.\deployment\deploiy_heroku.ps1
+```
+
+Windows CMD
+
+```shell script
+.\deployment\deploiy_heroku.bat
+```
+
+Linux
+
+```shell script
+./deployment/deploiy_heroku.sh
+```
+
+Troubleshooting:
+
+* wenn der Login über das Skript nicht funktioniert muss eine Anmeldung an der Heroku CLI vor der Skriptausführung
+  vorgenommen werden:
+    * heroku login
+
+## Weiterentwicklung
+
+Die Anwendung kann im Entwicklungsmodus gestartet werden:
 
 ```shell script
 ./gradlew quarkusDev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./gradlew build
-```
-
-It produces the `quarkus-run.jar` file in the `build/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `build/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar build/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./gradlew build -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar build/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./gradlew build -Dquarkus.native.enabled=true
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./build/wildtierrettung-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/gradle-tooling>.
-
-## Related Guides
-
-- Hibernate ORM ([guide](https://quarkus.io/guides/hibernate-orm)): Define your persistent model with Hibernate ORM and Jakarta Persistence
-- Narayana JTA - Transaction manager ([guide](https://quarkus.io/guides/transaction)): Offer JTA transaction support (included in Hibernate ORM)
-- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and method parameters for your beans (REST, CDI, Jakarta Persistence)
-- RESTEasy Classic JSON-B ([guide](https://quarkus.io/guides/rest-json)): JSON-B serialization support for RESTEasy Classic
-- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes with Swagger UI
-- PrimeFaces ([guide](https://quarkiverse.github.io/quarkiverse-docs/quarkus-primefaces/dev/)): PrimeFaces - lets you utilize primefaces and primefaces-extensions make JavaServer Faces (JSF) development so much easier!
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+> **_Hinweis:_**  Quarkus stellt ein Dev UI bereit, erreichbar unter <http://localhost:8080/q/dev/>.
