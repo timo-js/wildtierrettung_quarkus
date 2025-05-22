@@ -32,7 +32,7 @@ public class FlugmissionResource
 	@RolesAllowed({ "admin", "pilot", "zuschauer" })
 	public Response holeFlugmissionen(
 		@QueryParam("sortierenach") @DefaultValue("datum") String sortiereNach,
-		@QueryParam("sortierreihenfolge") @DefaultValue("asc") String sortierReihenfolge,
+		@QueryParam("sortierreihenfolge") @DefaultValue("desc") String sortierReihenfolge,
 		@QueryParam("jahr") Integer jahr)
 	{
 		Sort sortierung = erzeugeSortierung(sortiereNach, Arrays.asList("datum", "revier"), sortierReihenfolge);
