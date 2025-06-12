@@ -53,19 +53,19 @@ Vorkehrungen:
 Windows Powershell
 
 ```shell script
-.\deployment\deploiy_heroku.ps1
+.\deployment\deploy_heroku.ps1
 ```
 
 Windows CMD
 
 ```shell script
-.\deployment\deploiy_heroku.bat
+.\deployment\deploy_heroku.bat
 ```
 
 Linux
 
 ```shell script
-./deployment/deploiy_heroku.sh
+./deployment/deploy_heroku.sh
 ```
 
 Troubleshooting:
